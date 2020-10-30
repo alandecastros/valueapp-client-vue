@@ -42,14 +42,19 @@
         </a-col>
       </a-row>
     </div>
+    <acao-drawer />
   </page>
 </template>
 <script>
 import { onMounted, onUnmounted } from 'vue';
 import numeral from 'numeral';
 import { state, actions } from './handler';
+import AcaoDrawer from './AcaoDrawer';
 
 export default {
+  components: {
+    AcaoDrawer,
+  },
   setup() {
     onMounted(async () => {
       await actions.carregar();
@@ -61,6 +66,7 @@ export default {
 
     return {
       ...state,
+      ...actions,
       numeral,
     };
   },

@@ -1,5 +1,18 @@
 import { createApp } from 'vue';
-import { Layout, Spin, Result, Card, Divider, Col, Row } from 'ant-design-vue';
+import {
+  Layout,
+  Spin,
+  Result,
+  Card,
+  Divider,
+  Col,
+  Row,
+  Drawer,
+  Table,
+  Form,
+  InputNumber,
+  Tag,
+} from 'ant-design-vue';
 import router from './router';
 import Page from './components/Page';
 import App from './App';
@@ -14,5 +27,10 @@ app.use(Card);
 app.use(Divider);
 app.use(Col);
 app.use(Row);
+app.use(Drawer);
+app.use(Table);
+app.use(Form);
+app.use(InputNumber);
+app.use(Tag);
 app.component('page', Page);
 app.mount('#app');
