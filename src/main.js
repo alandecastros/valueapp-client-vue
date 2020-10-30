@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import numeral from 'numeral';
 import {
   Layout,
   Spin,
@@ -16,6 +17,26 @@ import {
 import router from './router';
 import Page from './components/Page';
 import App from './App';
+
+numeral.register('locale', 'pt-br', {
+  delimiters: {
+    thousands: '.',
+    decimal: ',',
+  },
+  abbreviations: {
+    thousand: 'mil',
+    million: 'milhões',
+    billion: 'b',
+    trillion: 't',
+  },
+  ordinal() {
+    return 'º';
+  },
+  currency: {
+    symbol: 'R$',
+  },
+});
+numeral.locale('pt-br');
 
 const app = createApp(App);
 app.config.productionTip = false;
