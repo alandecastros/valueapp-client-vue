@@ -58,11 +58,23 @@ const cenarios = computed(() => {
   return obterCenarios(state.acaoSelecionada.value);
 });
 
+const comparaAcoes = (a, b) => {
+  const valA = a.lpa / a.preco;
+  const valB = b.lpa / b.preco;
+  if (valA < valB) {
+    return 1;
+  }
+  if (valA > valB) {
+    return -1;
+  }
+  return 0;
+};
+
 const carregar = async () => {
   state.status.value = 'loading';
   try {
     const response = await api.obterAcoes();
-    setState(response);
+    setState({ acoes: response.acoes.sort(comparaAcoes) });
     state.status.value = 'success';
   } catch (e) {
     state.status.value = 'error';
